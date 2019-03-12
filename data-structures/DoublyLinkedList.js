@@ -6,7 +6,7 @@ function createNode(value) {
     }
 }
 
-function createLinkedList() {
+function createDoublyLinkedList() {
     return {
         // head
         head: null,
@@ -143,14 +143,8 @@ function createLinkedList() {
     }
 }
 
-const list = createLinkedList();
+const list = createDoublyLinkedList();
 const values = ['a', 'b', 'c', 'd', 'e'];
-const nodes = values.map(val => list.push(val));
-
-let node = list.get(Math.floor(list.length / 2));
-
-console.log(node.prev.value);
-console.log(node.value);
-console.log(node.next.value);
+values.map(val => list.push(val));
 
 console.log(list.print());

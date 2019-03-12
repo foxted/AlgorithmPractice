@@ -2,10 +2,11 @@ function createNode(value) {
     return {
         value,
         next: null,
+        prev: null,
     }
 }
 
-function createLinkedList() {
+function createCyclicalDoublyLinkedList() {
     return {
         // head
         head: null,
@@ -20,13 +21,16 @@ function createLinkedList() {
             if(this.head === null) {
                 this.head = node;
                 this.tail = node;
+                this.tail.next = this.head;
                 this.length++;
                 return node;
             }
 
             this.tail.next = node;
-
+            node.prev = this.tail;
+            node.next = this.head;
             this.tail = node;
+
             this.length++;
 
             return node;
@@ -58,7 +62,8 @@ function createLinkedList() {
                 current = current.next;
             }
 
-            penultimate.next = null;
+            penultimate.next = this.head;
+            penultimate.prev = node.prev;
             this.tail = penultimate;
             this.length--;
             return node;
@@ -79,6 +84,9 @@ function createLinkedList() {
             while(iterator < index) {
                 iterator++;
                 current = current.next;
+                if(current === this.head) {
+                    break;
+                }
             }
 
             return current;
@@ -91,7 +99,8 @@ function createLinkedList() {
 
             if(index === 0) {
                 const deleted = this.head;
-                this.head = this.head.next();
+                this.head = this.head.next;
+                this.head.prev = this.tail;
                 this.length--;
                 return deleted;
             }
@@ -107,7 +116,12 @@ function createLinkedList() {
             }
 
             const deleted = current;
+            current.next.prev = current.prev;
             previous.next = current.next;
+
+            if(this.head === previous) {
+                this.head.prev = previous;
+            }
 
             if(previous.next === null) {
                 this.tail = previous;
@@ -128,15 +142,19 @@ function createLinkedList() {
             while(current !== null) {
                 values.push(current.value);
                 current = current.next;
+                if(current === this.head) {
+                    break;
+                }
             }
 
-            return values.join(' => ')
+            return values.join(' <=> ')
         }
     }
 }
 
-const list = createLinkedList();
+const list = createCyclicalDoublyLinkedList();
 const values = ['a', 'b', 'c', 'd', 'e'];
+
 values.map(val => list.push(val));
 
-console.log(list.print())
+console.log(list.print() + ' <=> ' + list.tail.next.value + '...');
