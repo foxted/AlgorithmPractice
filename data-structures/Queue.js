@@ -36,3 +36,5 @@ console.info('Queue can have items:', q.length > 0);
 console.info('Display first element of queue:', q.peek());
 q.dequeue();
 console.info('Display the next element of queue:', q.peek());
+
+module.exports = createQueue
