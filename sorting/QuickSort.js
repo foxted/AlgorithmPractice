@@ -3,9 +3,9 @@
  * Average: O(n log(n))
  * Worst: O(n^2)
  */
-var generateArray = require('../utilities/generateArray');
+var generateArrayOfIntegers = require('../utilities/generateArrayOfIntegers');
 
-var list = generateArray(10);
+var list = generateArrayOfIntegers(10);
 
 function quickSort(list, left, right) {
     left = left || 0;

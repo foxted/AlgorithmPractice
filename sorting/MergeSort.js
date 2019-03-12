@@ -3,9 +3,9 @@
  * Average: O(n log(n))
  * Worst: O(n log(n))
  */
-var generateArray = require('../utilities/generateArray');
+var generateArrayOfIntegers = require('../utilities/generateArrayOfIntegers');
 
-var list = generateArray(10);
+var list = generateArrayOfIntegers(10);
 
 function mergeSort(list) {
    var helper = [];
@@ -22,6 +22,7 @@ function sort(list, helper, low, high) {
 }
 
 function merge(list, helper, low, middle, high) {
+    // Copy both halves into a helper array
     for(var i = low ; i <= high ; i++) {
         helper[i] = list[i];
     }
@@ -30,6 +31,10 @@ function merge(list, helper, low, middle, high) {
     var helperRight = middle + 1;
     var current = low;
 
+    /**
+     * Iterate through helper array. Compare the left and right half, copying back
+     * the smaller element from the two halves into the original array
+     */
     while (helperLeft <= middle && helperRight <= high) {
         if(helper[helperLeft] <= helper[helperRight]) {
             list[current] = helper[helperLeft];

@@ -3,9 +3,9 @@
  * Average: O(n^2)
  * Worst: O(n^2)
  */
-var generateArray = require('../utilities/generateArray');
+var generateArrayOfIntegers = require('../utilities/generateArrayOfIntegers');
 
-var list = generateArray(10);
+var list = generateArrayOfIntegers(10);
 
 function bubbleSort(list) {
     for(var i = list.length - 1 ; i >= 0 ; i--) {
