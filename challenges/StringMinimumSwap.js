@@ -1,31 +1,20 @@
-// @TODO Rewrite this to find minimum swaps required to make s1 === s2
-function swap(arr, first, last) {
-    let tmp = arr[first];
-    arr[first] = arr[last];
-    arr[last] = tmp;
-}
-
-function swapString(string, first, last) {
-    if(first === last) return string;
-
-    let tmp = string.split('');
-    swap(tmp, first, last);
-    return tmp.join('');
-}
-
+/**
+ * Minimum swap required to match anagram,
+ * * if possible return number of swap
+ * * if equal return 0
+ * * if impossible return -1
+ * Best: O(n)
+ * Average: O(n)
+ * Space complexity: O(n)
+ * @param s1
+ * @param s2
+ * @returns {number}
+ */
 function stringMinimumSwap(s1, s2) {
     if (s1.length !== s2.length) return -1;
     if (s1 === s2) return 0;
 
-    let map = {};
-
-    for(let i = 0 ; i < s2.length ; i++) {
-        if(map[s2[i]]) {
-            map[s2[i]].push(i);
-        } else {
-            map[s2[i]] = [i];
-        }
-    }
+    let map = createMap(s2);
 
     let counter = 0;
 
@@ -55,3 +44,48 @@ console.log('hello', 'hello:', stringMinimumSwap('hello', 'hello')); // = 0
 console.log('listen', 'silent:', stringMinimumSwap('listen', 'silent')); // = 3
 
 console.log('silver', 'livers:', stringMinimumSwap('silver', 'livers')); // = 4
+
+/**
+ * Create a map of characters for destination string
+ * @param string
+ */
+function createMap(string) {
+    let map = {};
+
+    for(let i = 0 ; i < string.length ; i++) {
+        if(map[string[i]]) {
+            map[string[i]].push(i);
+        } else {
+            map[string[i]] = [i];
+        }
+    }
+
+    return map;
+}
+
+/**
+ * Swap two elements in array
+ * @param arr
+ * @param first
+ * @param last
+ */
+function swap(arr, first, last) {
+    let tmp = arr[first];
+    arr[first] = arr[last];
+    arr[last] = tmp;
+}
+
+/**
+ * Swap two characters in a string
+ * @param string
+ * @param first
+ * @param last
+ * @returns {*}
+ */
+function swapString(string, first, last) {
+    if(first === last) return string;
+
+    let tmp = string.split('');
+    swap(tmp, first, last);
+    return tmp.join('');
+}
