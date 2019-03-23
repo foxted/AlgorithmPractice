@@ -81,14 +81,15 @@ let ht = new HashTable();
 
 ht.add('John Doe', 27);
 
-console.time('Insert:');
-ht.add('Jane Doe', 42);
-console.timeEnd('Insert:');
-
-console.time('Lookup:');
-console.log(ht.lookup('Jane Doe'));
-console.timeEnd('Lookup:');
-
-console.time('Remove:');
-ht.remove('Jane Doe');
-console.timeEnd('Remove:');
+// console.time('Insert:');
+// ht.add('Jane Doe', 42);
+// console.timeEnd('Insert:');
+//
+// console.time('Lookup:');
+// console.log(ht.lookup('Jane Doe'));
+// console.timeEnd('Lookup:');
+//
+// console.time('Remove:');
+// ht.remove('Jane Doe');
+// console.timeEnd('Remove:');
+module.exports = HashTable;

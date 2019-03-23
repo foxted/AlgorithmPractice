@@ -147,4 +147,6 @@ const list = createDoublyLinkedList();
 const values = ['a', 'b', 'c', 'd', 'e'];
 values.map(val => list.push(val));
 
-console.log(list.print());
+// console.log(list.print());
+module.exports = createNode;
+module.exports = createDoublyLinkedList;

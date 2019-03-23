@@ -147,4 +147,6 @@ const values = ['a', 'b', 'c', 'd', 'e'];
 
 values.map(val => list.push(val));
 
-console.log(list.print() + ' => ' + list.tail.next.value + '...');
+// console.log(list.print() + ' => ' + list.tail.next.value + '...');
+module.exports = createNode;
+module.exports = createCyclicalLinkedList;

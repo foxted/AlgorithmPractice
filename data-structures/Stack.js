@@ -30,8 +30,10 @@ lowerBodyStack.push('Underwear');
 lowerBodyStack.push('Socks');
 lowerBodyStack.push('Pants');
 lowerBodyStack.push('Shoes');
-console.log(lowerBodyStack.peek());
-lowerBodyStack.pop();
-console.log(lowerBodyStack.peek());
-lowerBodyStack.pop();
-console.log(lowerBodyStack.length);
+// console.log(lowerBodyStack.peek());
+// lowerBodyStack.pop();
+// console.log(lowerBodyStack.peek());
+// lowerBodyStack.pop();
+// console.log(lowerBodyStack.length);
+
+module.exports = createStack;

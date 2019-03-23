@@ -72,7 +72,9 @@ const q = createPriorityQueue();
 q.enqueue('Fix bug 1');
 q.enqueue('Fix bug 2', true);
 q.enqueue('Fix bug 3');
-console.log(q.length);
-console.log(q.peek());
-q.dequeue();
-console.log(q.length);
+// console.log(q.length);
+// console.log(q.peek());
+// q.dequeue();
+// console.log(q.length);
+
+module.exports = createPriorityQueue;
